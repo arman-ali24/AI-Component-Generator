@@ -11,7 +11,7 @@ import { FiRefreshCcw } from "react-icons/fi";
 import { GoogleGenAI } from "@google/genai";
 import { ClimbingBoxLoader, ClipLoader } from "react-spinners";
 import { toast } from "react-toastify";
-const API_KEY = import.meta.env.API_KEY;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const Home = () => {
   // framework types
@@ -22,10 +22,6 @@ const Home = () => {
     { value: "html-css-js", label: "HTML + CSS + JS" },
     { value: "html-tailwind-bootstrap", label: "HTML + Tailwind + Bootstrap" },
   ];
-
-  useEffect(() => {
-    console.log(import.meta.env.VITE_API_KEY);
-  }, []);
 
   const [outputScreen, setOutputScreen] = useState(false);
   const [tab, setTab] = useState(1);
@@ -43,7 +39,9 @@ const Home = () => {
   }
 
   // API key
-  const ai = new GoogleGenAI({});
+  const ai = new GoogleGenAI({
+    apiKey: API_KEY,
+  });
 
   // Generate code
   async function getResponse() {
