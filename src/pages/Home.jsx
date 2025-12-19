@@ -262,46 +262,63 @@ const Home = () => {
 
       {/* Fullscreen Preview Overlay */}
       {isNewTabOpen && (
-        <div className="fixed inset-0 z-50 bg-white flex flex-col">
-          {/* Header */}
-          <div
-            className="
-      text-black
-      w-full
-      h-[56px] sm:h-[60px]
-      flex items-center justify-between
-      px-4 sm:px-5
-      bg-gray-100
-      border-b
+  <div
+    className="
+      fixed
+      inset-0
+      z-[9999]
+      w-screen
+      h-screen
+      bg-white
+      overflow-hidden
+      flex
+      flex-col
     "
-          >
-            <p className="font-bold text-sm sm:text-base">Preview</p>
+  >
+    {/* Top Bar */}
+    <div
+      className="
+        flex
+        items-center
+        justify-between
+        px-4
+        h-[56px]
+        bg-gray-100
+        border-b
+        shrink-0
+      "
+    >
+      <p className="font-bold text-sm">Preview</p>
 
-            <button
-              onClick={() => setIsNewTabOpen(false)}
-              className="
-          w-9 h-9 sm:w-10 sm:h-10
-          rounded-lg sm:rounded-xl
-          border border-zinc-300
-          flex items-center justify-center
-          active:scale-95
+      <button
+        onClick={() => setIsNewTabOpen(false)}
+        className="
+          w-10
+          h-10
+          rounded-xl
+          border
+          border-zinc-300
+          flex
+          items-center
+          justify-center
         "
-            >
-              <IoCloseSharp className="text-lg sm:text-xl" />
-            </button>
-          </div>
+      >
+        <IoCloseSharp className="text-xl" />
+      </button>
+    </div>
 
-          {/* Iframe */}
-          <iframe
-            srcDoc={code}
-            className="
+    {/* Preview Content */}
+    <iframe
+      srcDoc={code}
+      className="
         w-full
+        h-full
         flex-1
         border-none
       "
-            title="Preview"
-          />
-        </div>
+      title="Preview"
+    />
+  </div>
       )}
     </>
   );
