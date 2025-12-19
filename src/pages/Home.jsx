@@ -262,20 +262,45 @@ const Home = () => {
 
       {/* Fullscreen Preview Overlay */}
       {isNewTabOpen && (
-        <div className="absolute inset-0 bg-white w-screen h-screen overflow-auto">
-          <div className="text-black w-full h-[60px] flex items-center justify-between px-5 bg-gray-100">
-            <p className="font-bold">Preview</p>
+        <div className="fixed inset-0 z-50 bg-white flex flex-col">
+          {/* Header */}
+          <div
+            className="
+      text-black
+      w-full
+      h-[56px] sm:h-[60px]
+      flex items-center justify-between
+      px-4 sm:px-5
+      bg-gray-100
+      border-b
+    "
+          >
+            <p className="font-bold text-sm sm:text-base">Preview</p>
+
             <button
               onClick={() => setIsNewTabOpen(false)}
-              className="w-10 h-10 rounded-xl border border-zinc-300 flex items-center justify-center"
+              className="
+          w-9 h-9 sm:w-10 sm:h-10
+          rounded-lg sm:rounded-xl
+          border border-zinc-300
+          flex items-center justify-center
+          active:scale-95
+        "
             >
-              <IoCloseSharp />
+              <IoCloseSharp className="text-lg sm:text-xl" />
             </button>
           </div>
+
+          {/* Iframe */}
           <iframe
             srcDoc={code}
-            className="w-full h-[calc(100vh-60px)]"
-          ></iframe>
+            className="
+        w-full
+        flex-1
+        border-none
+      "
+            title="Preview"
+          />
         </div>
       )}
     </>
