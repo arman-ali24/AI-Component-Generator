@@ -15,7 +15,7 @@ const Navbar = () => {
         className="
           absolute left-1/4 -translate-x-1/2
           md:static md:translate-x-0
-          text-[28px] sm:text-[22px] md:text-[25px]
+          text-[28px] sm:text-[28px] md:text-[28px]
           font-[700] sp-text
         "
       >
