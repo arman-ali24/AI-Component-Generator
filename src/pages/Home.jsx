@@ -262,63 +262,20 @@ const Home = () => {
 
       {/* Fullscreen Preview Overlay */}
       {isNewTabOpen && (
-  <div
-    className="
-      fixed
-      inset-0
-      z-[9999]
-      w-screen
-      h-screen
-      bg-white
-      overflow-hidden
-      flex
-      flex-col
-    "
-  >
-    {/* Top Bar */}
-    <div
-      className="
-        flex
-        items-center
-        justify-between
-        px-4
-        h-[56px]
-        bg-gray-100
-        border-b
-        shrink-0
-      "
-    >
-      <p className="font-bold text-sm">Preview</p>
+        <div className="fixed inset-0 z-[9999] w-screen h-screen  bg-white flex flex-col overflow-hidden">
+          {/* Header */}
+          <div className=" flex items-center  justify-between  px-4 sm:px-6  h-[56px] sm:h-[64px]  bg-gray-100  border-b shrink-0">
+            <p className="font-bold text-sm sm:text-base">Preview</p>
+            <button
+              onClick={() => setIsNewTabOpen(false)}
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl border border-zinc-300  flex items-center justify-center active:scale-95">
+              <IoCloseSharp className="text-xl sm:text-2xl"/>
+            </button>
+          </div>
 
-      <button
-        onClick={() => setIsNewTabOpen(false)}
-        className="
-          w-10
-          h-10
-          rounded-xl
-          border
-          border-zinc-300
-          flex
-          items-center
-          justify-center
-        "
-      >
-        <IoCloseSharp className="text-xl" />
-      </button>
-    </div>
-
-    {/* Preview Content */}
-    <iframe
-      srcDoc={code}
-      className="
-        w-full
-        h-full
-        flex-1
-        border-none
-      "
-      title="Preview"
-    />
-  </div>
+          {/* Preview Frame */}
+          <iframe srcDoc={code} title="Preview"  className="  w-full  flex-1  border-none"/>
+        </div>
       )}
     </>
   );
